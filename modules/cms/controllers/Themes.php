@@ -313,6 +313,18 @@ class Themes extends Controller
         return $widget;
     }
 
+    protected function makeImportFormWidget($theme)
+    {
+        $widgetConfig = $this->makeConfig('~/modules/cms/models/themeexport/fields.yaml');
+        $widgetConfig->alias = 'form'.studly_case($theme->getDirName());
+        $widgetConfig->model = new ThemeExport;
+        $widgetConfig->model->theme = $theme;
+        $widgetConfig->arrayName = 'ThemeExport';
+
+        $widget = $this->makeWidget('Backend\Widgets\Form', $widgetConfig);
+        return $widget;
+    }
+
     //
     // Theme import
     //
