@@ -703,4 +703,31 @@ class AssetList extends WidgetBase
 
         return true;
     }
+
+    protected function itemContainsWord($word, $item, $exact = false)
+    {
+        $operator = $exact ? 'is' : 'contains';
+
+        if (strlen($item->title)) {
+            if (Str::$operator(Str::lower($item->title), $word)) {
+                return true;
+            }
+        }
+
+        if (Str::$operator(Str::lower($item->fileName), $word)) {
+            return true;
+        }
+
+        if (Str::$operator(Str::lower($item->description), $word) && strlen($item->description)) {
+            return true;
+        }
+
+        foreach ($item->descriptions as $value) {
+            if (Str::$operator(Str::lower($value), $word) && strlen($value)) {
+                return true;
+            }
+        }
+
+        return false;
+    }
 }
