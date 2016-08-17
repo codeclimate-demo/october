@@ -7268,3 +7268,6 @@ header#layout-header .navbar-brand {
 .callout-success h4 {
   color: #3c763d;
 }
+.btn.btn-med [class*=" icon-"].pull-right.icon-2x {
+  margin-left: .2em;
+}
