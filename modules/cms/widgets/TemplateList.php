@@ -324,7 +324,7 @@ class TemplateList extends WidgetBase
 
     protected function itemContainsWord($word, $item, $exact = false)
     {
-        $operator = $exact ? 'is' : 'contains';
+        $operator = $exact ? 'equals' : 'contains';
 
         if (strlen($item->title)) {
             if (Str::$operator(Str::lower($item->title), $word)) {
