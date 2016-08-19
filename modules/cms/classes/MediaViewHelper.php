@@ -86,6 +86,7 @@ class MediaViewHelper
         }
 
         $partial = Partial::loadCached($controller->getTheme(), $name);
+        Cache::clearTwig();
 
         return $this->playerPartialFlags[$name] = !!$partial;
     }
@@ -100,7 +101,14 @@ class MediaViewHelper
             case 'audio':
                 return '<audio src="'.e($src).'" controls></audio>';
             break;
+
+            case 'gif':
+                return '<img src="'.e($src).'"></img>';
+            break;
+
+            case 'article':
+                return '<article>'.e($src).'</article>';
+            break;
         }
     }
-
 }
